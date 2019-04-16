@@ -14,6 +14,13 @@ void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(WelcomeScreen());
+    // Create our Finders
+    final titleFinder = find.text('Home');
+
+
+    // Use the `findsOneWidget` matcher provided by flutter_test to verify our
+    // Text Widgets appear exactly once in the Widget tree
+    expect(titleFinder, findsOneWidget);
 
   });
 }
