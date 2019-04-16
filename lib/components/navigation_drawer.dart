@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mextv_app/app_screens/about_us_screen.dart';
-import 'package:mextv_app/app_screens/c_news_screen.dart';
+
+//import 'package:mextv_app/app_screens/c_news_screen.dart';
 import 'package:mextv_app/app_screens/live_tv_screen.dart';
-import 'package:mextv_app/app_screens/mex_contact_us_screen.dart';
+
+//import 'package:mextv_app/app_screens/mex_contact_us_screen.dart';
 import 'package:mextv_app/app_screens/schedule_screen.dart';
 
 
