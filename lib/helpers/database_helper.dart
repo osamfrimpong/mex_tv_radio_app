@@ -2,7 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'package:mextv_app/models/carousel_image.dart';
+
 
 class DatabaseHelper {
   static DatabaseHelper _databaseHelper;
@@ -48,16 +48,16 @@ class DatabaseHelper {
     return result;
   }
 
-  Future<int> insertImage(CarouselImage image) async {
-    Database db = await this.database;
-    var result = await db.insert(imagesTable, image.toMap());
-    return result;
-  }
-
-  Future<int> updateImage(CarouselImage image) async {
-    Database db = await this.database;
-    var result = await db.update(imagesTable, image.toMap(),
-        where: '$colId = ?', whereArgs: [image.id]);
-    return result;
-  }
+//  Future<int> insertImage(CarouselImage image) async {
+//    Database db = await this.database;
+//    var result = await db.insert(imagesTable, image.toMap());
+//    return result;
+//  }
+//
+//  Future<int> updateImage(CarouselImage image) async {
+//    Database db = await this.database;
+//    var result = await db.update(imagesTable, image.toMap(),
+//        where: '$colId = ?', whereArgs: [image.id]);
+//    return result;
+//  }
 }

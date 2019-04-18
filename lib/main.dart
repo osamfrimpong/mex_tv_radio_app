@@ -15,6 +15,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -49,6 +50,8 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen>
     with AutomaticKeepAliveClientMixin<WelcomeScreen> {
+
+
   int _selectedIndex = 0;
   final bodyScreens = [Home(), LiveRadio(), News(), Videos(), MexEvents()];
 
