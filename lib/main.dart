@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:mextv_app/models/carousel_image.dart';
 import 'app_screens/mex_events_screen.dart';
 import 'app_screens/c_news_screen.dart';
 import 'app_screens/live_radio_screen.dart';
@@ -9,6 +10,10 @@ import 'app_screens/videos_screen.dart';
 import 'components/mex_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'components/navigation_drawer.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
+import 'package:flutter/foundation.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -20,6 +25,21 @@ void main() {
       primaryColorDark: Colors.pink,
     ),
   ));
+}
+
+Future<List<CarouselImage>> fetchPhotos(http.Client client) async {
+  final response = await client.get(
+      'https://jsonblob.com/api/jsonBlob/ff3a6236-60c9-11e9-b19d-af6ec6b68ba5');
+  // print("Raw Response ${response.body.toString()}");
+  return compute(parsePhotos, response.body);
+}
+
+List<CarouselImage> parsePhotos(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+
+  return parsed
+      .map<CarouselImage>((json) => CarouselImage.fromJsonMap(json))
+      .toList();
 }
 
 class WelcomeScreen extends StatefulWidget {
@@ -35,7 +55,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -84,9 +103,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   //Navigation Drawer
 
-
-
-
   @override
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
@@ -97,22 +113,27 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        SizedBox(
-          height: 290.0,
-          child: Carousel(
-            showIndicator: false,
-            autoplayDuration: Duration(seconds: 4),
-            images: [
-              ExactAssetImage("assets/images/image_11.jpg"),
-              ExactAssetImage("assets/images/radiobanner.jpg"),
-              ExactAssetImage("assets/images/video.jpg"),
-              ExactAssetImage("assets/images/image_30.jpg"),
-            ],
-          ),
+        FutureBuilder(
+          future: fetchPhotos(http.Client()),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) print(snapshot.error);
+            return SizedBox(
+              height: 290.0,
+              child: Carousel(
+                  showIndicator: false,
+                  autoplayDuration: Duration(seconds: 4),
+                  images: (snapshot.hasData || !snapshot.hasError)
+                      ?
+                  snapshot.data.map((item) =>
+                      CachedNetworkImageProvider(item.url)).toList()
+
+                      : [ExactAssetImage("assets/images/radiobanner.jpg"),]
+              ),
+            );
+          },
         ),
-        homeMenuItem(
-            "Live TV", "assets/images/livetv.jpeg", LiveTV(), context),
-        homeMenuItem("Live Radio", "assets/images/radiobanner.jpg",LiveRadio(),
+        homeMenuItem("Live TV", "assets/images/livetv.jpeg", LiveTV(), context),
+        homeMenuItem("Live Radio", "assets/images/radiobanner.jpg", LiveRadio(),
             context),
         homeMenuItem("CNews", "assets/images/cnews.jpeg", News(), context),
         homeMenuItem("Videos", "assets/images/video.jpg", Videos(), context),

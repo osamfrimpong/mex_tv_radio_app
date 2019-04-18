@@ -21,7 +21,8 @@ dependencies:
   audioplayer: ^0.5.2
   flutter_webview_plugin:
   path_provider: ^0.5.0+1
-  audioplayers: ^0.10.1
+  sqflite: any
+#  audioplayers: ^0.10.1
 
 dev_dependencies:
   flutter_test:
