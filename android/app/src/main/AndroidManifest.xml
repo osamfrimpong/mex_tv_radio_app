@@ -2,6 +2,13 @@
     package="com.schandorf.mextv_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <service
+    android:name="com.example.mediaplayer.AudioService"
+    android:enabled="true"
+    android:exported="false">
+    </service>
 
     <application
         android:name="io.flutter.app.FlutterApplication"

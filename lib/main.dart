@@ -27,12 +27,15 @@ void main() {
     ),
   ));
 }
-
+String myResponse;
 Future<List<CarouselImage>> fetchPhotos(http.Client client) async {
-  final response = await client.get(
-      'https://jsonblob.com/api/jsonBlob/ff3a6236-60c9-11e9-b19d-af6ec6b68ba5');
+  if(myResponse == null) {
+    final response = await client.get(
+        'https://jsonblob.com/api/jsonBlob/ff3a6236-60c9-11e9-b19d-af6ec6b68ba5');
+    myResponse = response.body;
+  }
   // print("Raw Response ${response.body.toString()}");
-  return compute(parsePhotos, response.body);
+  return compute(parsePhotos, myResponse);
 }
 
 List<CarouselImage> parsePhotos(String responseBody) {
@@ -120,14 +123,15 @@ class Home extends StatelessWidget {
           future: fetchPhotos(http.Client()),
           builder: (context, snapshot) {
             if (snapshot.hasError) print(snapshot.error);
+            final data = snapshot.data;
             return SizedBox(
               height: 290.0,
               child: Carousel(
                   showIndicator: false,
                   autoplayDuration: Duration(seconds: 4),
-                  images: (snapshot.hasData || !snapshot.hasError)
+                  images: (data != null)
                       ?
-                  snapshot.data.map((item) =>
+                  data.map((item) =>
                       CachedNetworkImageProvider(item.url)).toList()
 
                       : [ExactAssetImage("assets/images/radiobanner.jpg"),]

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mextv_app/app_screens/about_us_screen.dart';
+import 'package:share/share.dart';
 
 //import 'package:mextv_app/app_screens/c_news_screen.dart';
 import 'package:mextv_app/app_screens/live_tv_screen.dart';
@@ -97,6 +98,7 @@ Drawer navDrawer(BuildContext context) {
               title: new Text('Share this App'),
               onTap: () {
                 Navigator.pop(context);
+                Share.share("Get our app from the play store or apple store");
 
               }),
           new ListTile(

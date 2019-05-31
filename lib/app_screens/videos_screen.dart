@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mextv_app/components/mex_app_bar.dart';
+// import 'package:youtube_player/youtube_player.dart';
 
 class Videos extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _VideosState extends State<Videos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MexAppBar.create("Videos"),
-      body: Container(child: Center(child: Text("Videos"),),),
+      body: Container(child: Center(child: Text("Videos Coming Soon!"),),),
     );
   }
 }
