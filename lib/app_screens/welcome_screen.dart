@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_pro/carousel_pro.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:mextv_app/app_screens/videos_screen.dart';
+import 'package:mextv_app/components/mex_app_bar.dart';
+import 'package:mextv_app/components/navigation_drawer.dart';
+import 'all_radios_screen.dart';
+import 'c_news_screen.dart';
+import 'home_screen.dart';
 import 'mex_events_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -8,42 +12,24 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with AutomaticKeepAliveClientMixin<WelcomeScreen> {
   int _selectedIndex = 0;
+  final bodyScreens = [Home(), AllRadiosScreen(), News(), Videos(), MexEvents()];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
-      ),
-      body: ListView(
-        children: <Widget>[
-          SizedBox(
-            height: 300.0,
-            child: Carousel(
-              showIndicator: false,
-              autoplayDuration: Duration(seconds: 4),
-              images: [
-                ExactAssetImage("assets/images/image_11.jpg"),
-                ExactAssetImage("assets/images/radiobanner.jpg"),
-                ExactAssetImage("assets/images/video.jpg"),
-                ExactAssetImage("assets/images/image_30.jpg"),
-              ],
-            ),
-          ),
-          homeMenuItem(
-              "Live TV", "assets/images/image_11.jpg", MexEvents(), context),
-          homeMenuItem("Live Radio", "assets/images/radiobanner.jpg",
-              MexEvents(), context),
-          homeMenuItem(
-              "CNews", "assets/images/image_30.jpg", MexEvents(), context),
-          homeMenuItem(
-              "Videos", "assets/images/video.jpg", MexEvents(), context),
-          homeMenuItem(
-              "Mex Events", "assets/images/image_11.jpg", MexEvents(), context),
-        ],
-      ),
+      appBar: _selectedIndex == 0 ? MexAppBar.create("Home") : null,
+      body: bodyScreens[_selectedIndex],
       bottomNavigationBar: createBottomNav(),
+      drawer: _selectedIndex == 0 ? navDrawer(context) : null,
     );
   }
 
@@ -62,11 +48,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             title: Text("Home"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.videocam),
+            icon: Icon(Icons.tap_and_play),
             title: Text("Live Radio"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.notifications_active),
             title: Text("CNews"),
           ),
           BottomNavigationBarItem(
@@ -74,56 +60,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             title: Text("Videos"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.calendar_today),
             title: Text("Mex Events"),
           ),
-
         ]);
   }
 
-  Widget homeMenuItem(
-      String title, String image, navScreen, BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => navScreen));
-        },
-        child: SizedBox(
-          height: 100.0,
-          child: Stack(
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(
-                      image,
-                    ),
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
-              ),
-              Opacity(
-                opacity: 0.6,
-                child: Container(
-                  color: Colors.black,
-                ),
-              ),
-              Center(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  //Navigation Drawer
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

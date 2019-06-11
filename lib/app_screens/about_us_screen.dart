@@ -32,7 +32,7 @@ class AboutUs extends StatelessWidget {
                   width: 180.0,
                   height: 3.0,
                   child: Container(
-                    color: Colors.pink,
+                    color: Color(0xFF6A1061),
                   ),
                 ),
               ),
@@ -48,7 +48,7 @@ class AboutUs extends StatelessWidget {
                 padding:
                     const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 20.0),
                 child: Text(
-                  "Last Update \nApril,2019",
+                  "Last Update \nJune,2019",
                   style: TextStyle(color: Colors.black54, fontSize: 18.0),
                 ),
               ),

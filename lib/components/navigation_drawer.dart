@@ -19,18 +19,18 @@ Drawer navDrawer(BuildContext context) {
             child: new DrawerHeader(
               padding: new EdgeInsets.all(0.0),
               decoration: new BoxDecoration(
-                color: Colors.pink,
+                color: Color(0xFF6A1061),
               ),
               child: new Center(
                 child: Container(
                   width: 170.0,
                   height: 170.0,
                   decoration: BoxDecoration(
-                      color: Colors.pink,
+                      color: Colors.white,
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: AssetImage("assets/images/logo.jpg"),
-                        fit: BoxFit.cover,
+                        image: AssetImage("assets/images/mex_tv_logo_small.png"),
+                        fit: BoxFit.scaleDown,
                       ),
 //                    borderRadius: BorderRadius.all(Radius.circular(90.0)),
                       border: Border.all(color: Colors.black12, width: 4.0)),
@@ -38,13 +38,13 @@ Drawer navDrawer(BuildContext context) {
               ),
             ),
           ),
-          new ListTile(
-              leading: new Icon(Icons.play_arrow),
-              title: new Text('Live TV'),
-              onTap: () {
-                Navigator.pop(context);
-                doNavigation(context, LiveTV());
-              }),
+          // new ListTile(
+          //     leading: new Icon(Icons.play_arrow),
+          //     title: new Text('Live TV'),
+          //     onTap: () {
+          //       Navigator.pop(context);
+          //       doNavigation(context, LiveTV());
+          //     }),
           new ListTile(
               leading: new Icon(Icons.access_time),
               title: new Text('Schedule'),

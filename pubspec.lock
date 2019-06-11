@@ -90,6 +90,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.5"
+  flutter_radio:
+    dependency: "direct main"
+    description:
+      name: flutter_radio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.7"
   flutter_test:
     dependency: "direct dev"
     description: flutter

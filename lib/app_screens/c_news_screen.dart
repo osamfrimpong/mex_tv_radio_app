@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mextv_app/components/mex_app_bar.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-final String selectedUrl = "https://metblog718613490.wordpress.com/";
+final String selectedUrl = "https://mediaexcellencetv.com/news/";
 
 //full scaffold
 class News extends StatefulWidget {

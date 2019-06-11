@@ -2,17 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:mextv_app/components/mex_app_bar.dart';
 import 'package:audioplayer/audioplayer.dart';
 import 'dart:async';
-
+import 'package:mextv_app/models/models.dart';
 
 typedef void OnError(Exception exception);
 
-const kUrl = "https://s3.radio.co/s66936a46e/listen";
+//const kUrl = "https://s3.radio.co/s66936a46e/listen";
 
 
 enum PlayerState { stopped, playing, paused }
 
 //full scaffold
 class LiveRadio extends StatefulWidget {
+  final Liveradio liveradio;
+
+  LiveRadio({Key key, @required this.liveradio}) : super(key: key);
+
   @override
   _LiveRadioState createState() => _LiveRadioState();
 }
@@ -81,7 +85,7 @@ class _LiveRadioState extends State<LiveRadio> {
   }
 
   Future play() async {
-    await audioPlayer.play(kUrl);
+    await audioPlayer.play(widget.liveradio.url);
     setState(() {
       playerState = PlayerState.playing;
     });
@@ -199,11 +203,11 @@ class _LiveRadioState extends State<LiveRadio> {
                       width: 200.0,
                       height: 200.0,
                       decoration: BoxDecoration(
-                          color: Colors.pink,
+                          color: Colors.white,
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: AssetImage("assets/images/logo.jpg"),
-                            fit: BoxFit.cover,
+                            image: AssetImage("assets/images/mex_radio_logo_small.png"),
+                            fit: BoxFit.contain,
                           ),
 //                    borderRadius: BorderRadius.all(Radius.circular(90.0)),
                           border:
@@ -214,7 +218,7 @@ class _LiveRadioState extends State<LiveRadio> {
                     padding:
                     EdgeInsets.symmetric(vertical: 25.0, horizontal: 15.0),
                     child: Text(
-                      "Mex Radio Live",
+                      widget.liveradio.title,
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
