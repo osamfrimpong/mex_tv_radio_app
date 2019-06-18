@@ -77,12 +77,14 @@ class TableYoutubeVideos extends SqfEntityTable {
     false; // when useSoftDeleting is true, creates a field named "isDeleted" on the table, and set to "1" this field when item deleted (does not hard delete)
     primaryKeyisIdentity = false;
     defaultJsonUrl =
-    "https://jsonblob.com/api/jsonBlob/e65eabd3-8817-11e9-b9f8-c3b7c2b4fb11"; // optional: to synchronize your table with json data from webUrl
+    "https://jsonblob.com/api/jsonBlob/02a62697-8af3-11e9-9e16-e78fe44b7cf1"; // optional: to synchronize your table with json data from webUrl
 
     // declare fields
     fields = [
-      SqfEntityField("url", DbType.text),
-      SqfEntityField("video_url", DbType.text)
+      SqfEntityField("thumbnail", DbType.text),
+      SqfEntityField("video_url", DbType.text),
+      SqfEntityField("video_id", DbType.text),
+      SqfEntityField("video_title", DbType.text),
     ];
 
     super.init();

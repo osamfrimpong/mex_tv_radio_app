@@ -68,6 +68,7 @@ class _AllRadiosScreenState extends State<AllRadiosScreen> {
                                     color: Colors.white,
                                     fontSize: 20.0,
                                   ),
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ],
