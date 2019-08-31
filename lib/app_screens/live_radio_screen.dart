@@ -55,9 +55,9 @@ class _LiveRadioState extends State<LiveRadio> {
 
   @override
   void dispose() {
-    _positionSubscription.cancel();
-    _audioPlayerStateSubscription.cancel();
-    audioPlayer.stop();
+    // _positionSubscription.cancel();
+    // _audioPlayerStateSubscription.cancel();
+    // audioPlayer.stop();
     super.dispose();
   }
 
