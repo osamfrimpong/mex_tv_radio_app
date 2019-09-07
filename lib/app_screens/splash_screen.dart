@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+//import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class SplashScreen extends StatefulWidget {
   final nextScreen;
@@ -26,10 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PlatformScaffold(
-      iosContentPadding: true,
-      iosContentBottomPadding: true,
-      body: Container(
+    return Container(
         decoration: new BoxDecoration(
           image: new DecorationImage(
             image: new AssetImage("assets/images/splashbackground.jpg"),
@@ -54,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ],
           ),
         ),
-      ),
+
     );
   }
 }
