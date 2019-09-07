@@ -3,9 +3,11 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'all_radios_screen.dart';
 import 'c_news_screen.dart';
+import 'live_tv_screen.dart';
 import 'mex_events_screen.dart';
 import 'videos_screen.dart';
 import 'package:mextv_app/models/models.dart';
+//import 'package:mextv_app/app_screens/video_player.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -48,8 +50,8 @@ class _HomeState extends State<Home> {
                 ExactAssetImage("assets/images/banner6.jpg"),
               ]),
         ),
-        //  homeMenuItem(
-        //      "Live TV", "assets/images/livetv.jpeg", LiveTV(), context),
+        homeMenuItem(
+            "Live TV", "assets/images/livetv.jpeg", LiveTV(), context),
         homeMenuItem("Live Radio", "assets/images/radiobanner.jpg", AllRadiosScreen(),
             context),
         homeMenuItem("CNews", "assets/images/cnews.jpeg", News(), context),

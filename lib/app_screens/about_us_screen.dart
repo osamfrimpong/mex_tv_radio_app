@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mextv_app/components/mex_app_bar.dart';
 
@@ -27,7 +28,7 @@ class AboutUs extends StatelessWidget {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(top: 5.0, left: 10.0, bottom: 20.0),
+                const EdgeInsets.only(top: 5.0, left: 10.0, bottom: 20.0),
                 child: SizedBox(
                   width: 180.0,
                   height: 3.0,
@@ -38,7 +39,7 @@ class AboutUs extends StatelessWidget {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 20.0),
+                const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 20.0),
                 child: Text(
                   "Version\n2.2.1",
                   style: TextStyle(color: Colors.black54, fontSize: 18.0),
@@ -46,19 +47,21 @@ class AboutUs extends StatelessWidget {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 20.0),
+                const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 20.0),
                 child: Text(
-                  "Last Update \nJune,2019",
+                  "Last Update \nSeptember,2019",
                   style: TextStyle(color: Colors.black54, fontSize: 18.0),
                 ),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 20.0),
+                const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 20.0),
                 child: Text(
-                  "MexTV is an online TV channel under INNOVILLE capital. "
-                      "We seek to give platform to young talents to become their dreams and nurture their talents to make a success out of it.",
-                  style: TextStyle(color: Colors.black, fontSize: 20.0),
+                  "Mex Tv/ Radio is a Christian educational television and Radio with content related to youth's and views about education entertainment, society, Christianity, politics, science, and technology to students, faculty members, and everyone who has access to the Internet. It is a part of MEX studios Global. "
+                      "\n\nVision: To be the first Online TV/Radio option for young people and middle aged adults in Ghana, Africa and beyond and to also to give them a different point of view. "
+                      "\n\nMission: Media Excellence Television and Radio seeks to provide high-quality, Christian, entertaining, educational, inspirational programmes and broadcasting across the globe that will provide platforms for businesses, individuals and non-profit organizations in promoting their brands and reaching out to a wide range of potential customers. We want to also to be the trusted source of informative, educational and entertaining content in every field.",
+                  style: TextStyle(color: Colors.black, fontSize: 20.0,),
+                  textAlign: TextAlign.justify,
                 ),
               ),
               Padding(
