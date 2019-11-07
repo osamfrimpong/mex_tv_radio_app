@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player/youtube_player.dart';
+//import 'package:youtube_player/youtube_player.dart';
 import 'package:mextv_app/models/models.dart';
 import 'package:mextv_app/components/mex_app_bar.dart';
 
@@ -18,20 +18,7 @@ class _MyYoutubePlayerState extends State<MyYoutubePlayer> {
     return Scaffold(
       appBar: MexAppBar.create(widget.youtubevideo.video_title),
           body: Container(
-        child: YoutubePlayer(
-          context: context,
-          source: widget.youtubevideo.video_id,
-          quality: YoutubeQuality.HD,
-          isLive: false,
-          aspectRatio: 16 / 9,
-          autoPlay: true,
-          loop: false,
-          reactToOrientationChange: true,
-          startFullScreen: false,
-          controlsActiveBackgroundOverlay: true,
-          controlsTimeOut: Duration(seconds: 4),
-          playerMode: YoutubePlayerMode.DEFAULT,
-        ),
+        child: Text("YOutube"),
       ),
     );
   }

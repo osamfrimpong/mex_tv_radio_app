@@ -3,6 +3,7 @@ import 'package:mextv_app/components/mex_app_bar.dart';
 import '../models/models.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 class Videos extends StatefulWidget {
   @override
   _VideosState createState() => _VideosState();

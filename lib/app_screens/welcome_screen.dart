@@ -3,7 +3,7 @@ import 'package:mextv_app/app_screens/videos_screen.dart';
 import 'package:mextv_app/components/mex_app_bar.dart';
 import 'package:mextv_app/components/navigation_drawer.dart';
 import 'all_radios_screen.dart';
-import 'c_news_screen.dart';
+import 'wp_news.dart';
 import 'home_screen.dart';
 import 'mex_events_screen.dart';
 
@@ -15,7 +15,7 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen>
     with AutomaticKeepAliveClientMixin<WelcomeScreen> {
   int _selectedIndex = 0;
-  final bodyScreens = [Home(), AllRadiosScreen(), News(), Videos(), MexEvents()];
+  final bodyScreens = [Home(), AllRadiosScreen(), MexNews(), Videos(), MexEvents()];
 
   @override
   void initState() {

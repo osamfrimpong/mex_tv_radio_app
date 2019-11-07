@@ -7,8 +7,9 @@ import 'live_tv_screen.dart';
 import 'mex_events_screen.dart';
 import 'videos_screen.dart';
 import 'package:mextv_app/models/models.dart';
+import 'wp_news.dart';
 //import 'package:mextv_app/app_screens/video_player.dart';
-
+//import 'youtube_player_flutter.dart';
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -51,10 +52,10 @@ class _HomeState extends State<Home> {
               ]),
         ),
         homeMenuItem(
-            "Live TV", "assets/images/livetv.jpeg", LiveTV(), context),
+            "Live TV", "assets/images/livetv.jpeg", MyLiveTV(), context),
         homeMenuItem("Live Radio", "assets/images/radiobanner.jpg", AllRadiosScreen(),
             context),
-        homeMenuItem("CNews", "assets/images/cnews.jpeg", News(), context),
+        homeMenuItem("CNews", "assets/images/cnews.jpeg", MexNews(), context),
         homeMenuItem("Videos", "assets/images/video.jpg", Videos(), context),
         homeMenuItem(
             "Mex Events", "assets/images/mexevent.jpeg", MexEvents(), context),
