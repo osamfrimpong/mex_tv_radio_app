@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:mextv_app/components/mex_app_bar.dart';
 //import 'package:youtube_player/youtube_player.dart';
 import 'package:http/http.dart' as http;
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:flutter_youtube/flutter_youtube.dart';
 
 class MyLiveTV extends StatefulWidget {
@@ -18,7 +16,7 @@ class _MyLiveTVState extends State<MyLiveTV> {
   bool isStreaming = false;
   bool isStreamingLive = false;
 
-  YoutubePlayerController _controller = YoutubePlayerController();
+  // YoutubePlayerController _controller = YoutubePlayerController();
 
   @override
   void initState() {
@@ -34,7 +32,6 @@ class _MyLiveTVState extends State<MyLiveTV> {
         retrieveChannelData("completed").then((videoData) {
           int totalCompletedVideos = videoData['pageInfo']['totalResults'];
           if (totalCompletedVideos > 0) {
-            List videoItems = videoData['items'];
             setState(() {
               youtubeStreamLink = videoData['items']
                   [0]['id']['videoId'];
@@ -88,27 +85,27 @@ class _MyLiveTVState extends State<MyLiveTV> {
     return jsonDecode(response.body);
   }
 
-  Widget _youtubePlayerFlutter(String videoLink) {
-    return YoutubePlayer(
-      context: context,
-      videoId: videoLink,
-      flags: YoutubePlayerFlags(
-        mute: false,
-        autoPlay: true,
-        forceHideAnnotation: true,
-        showVideoProgressIndicator: true,
-      ),
-      videoProgressIndicatorColor: Colors.amber,
-      progressColors: ProgressColors(
-        playedColor: Colors.amber,
-        handleColor: Colors.amberAccent,
-      ),
-      onPlayerInitialized: (controller) {
-        _controller = controller;
-//            _controller.addListener(listener);
-      },
-    );
-  }
+//   Widget _youtubePlayerFlutter(String videoLink) {
+//     return YoutubePlayer(
+//       context: context,
+//       videoId: videoLink,
+//       flags: YoutubePlayerFlags(
+//         mute: false,
+//         autoPlay: true,
+//         forceHideAnnotation: true,
+//         showVideoProgressIndicator: true,
+//       ),
+//       videoProgressIndicatorColor: Colors.amber,
+//       progressColors: ProgressColors(
+//         playedColor: Colors.amber,
+//         handleColor: Colors.amberAccent,
+//       ),
+//       onPlayerInitialized: (controller) {
+//         _controller = controller;
+// //            _controller.addListener(listener);
+//       },
+//     );
+//   }
 
   Widget _flutterYoutube(String videoLink) {
 //    FlutterYoutube.playYoutubeVideoById(

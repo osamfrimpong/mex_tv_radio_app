@@ -4,7 +4,6 @@ import 'package:mextv_app/app_screens/about_us_screen.dart';
 import 'package:share/share.dart';
 
 //import 'package:mextv_app/app_screens/c_news_screen.dart';
-import 'package:mextv_app/app_screens/live_tv_screen.dart';
 
 //import 'package:mextv_app/app_screens/mex_contact_us_screen.dart';
 import 'package:mextv_app/app_screens/schedule_screen.dart';
@@ -98,7 +97,7 @@ Drawer navDrawer(BuildContext context) {
               title: new Text('Share this App'),
               onTap: () {
                 Navigator.pop(context);
-                Share.share("Get our app from the play store or apple store");
+                Share.share("Get our app from Playstore via https://play.google.com/store/apps/details?id=com.schandorf.mextv_app");
 
               }),
           new ListTile(

@@ -47,7 +47,7 @@ class TableLiveRadios extends SqfEntityTable {
     false; // when useSoftDeleting is true, creates a field named "isDeleted" on the table, and set to "1" this field when item deleted (does not hard delete)
     primaryKeyisIdentity = false;
     defaultJsonUrl =
-    "https://jsonblob.com/api/jsonBlob/e65eabd3-8817-11e9-b9f8-c3b7c2b4fb11"; // optional: to synchronize your table with json data from webUrl
+    "https://mexgh.com/backend/radios.json"; // optional: to synchronize your table with json data from webUrl
 
     // declare fields
     fields = [

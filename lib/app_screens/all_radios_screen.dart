@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mextv_app/components/mex_app_bar.dart';
 import '../models/models.dart';
-import 'package:mextv_app/app_screens/live_radio_screen.dart';
+import 'package:mextv_app/app_screens/radio_player.dart';
 
 class AllRadiosScreen extends StatefulWidget {
   @override
@@ -11,10 +11,12 @@ class AllRadiosScreen extends StatefulWidget {
 class _AllRadiosScreenState extends State<AllRadiosScreen> {
   List<Liveradio> liveRadiosList = new List();
   int itemLength = 0;
+  bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
+    
     Liveradio().select().toList((liveradiolist) {
       this.setState(() {
         this.liveRadiosList = liveradiolist;
@@ -40,7 +42,7 @@ class _AllRadiosScreenState extends State<AllRadiosScreen> {
                     (radioItem) => InkWell(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => LiveRadio(liveradio: radioItem,)));
+                                builder: (context) => PlayerWidget(liveradio: radioItem,)));
                           },
                           child: Stack(
                             children: <Widget>[
@@ -77,17 +79,41 @@ class _AllRadiosScreenState extends State<AllRadiosScreen> {
                   )
                   .toList(),
             )
-          : Container(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    "No Live Radios. Ensure You Have An Active Internet Connection and Restart the App",
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.0),
-                  ),
-                ),
+          : Center(
+            child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(Icons.cloud_off,color: Theme.of(context).primaryColor,size: 54.0,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("No Data!",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
               ),
-            ),
+             Text(isLoading?"Loading...":"Please Reload",style: TextStyle(fontWeight: FontWeight.w600,color: Colors.black54,fontSize: 18.0),),
+            ],
+          )),
+          floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.refresh),
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {
+          // debugPrint(_tabController.index.toString());
+            setState(() {
+              isLoading = true;
+            });
+        Liveradio.fromWeb((liveradioList) {
+    Liveradio().saveAll(liveradioList).then((results) {
+         Future.delayed(Duration(seconds: 4)).then((onValue){
+                setState(() {
+                  liveRadiosList = liveradioList;
+                  isLoading = false;
+                });
+              });
+    });
+  });
+
+        
+        },
+      ),
     );
   }
 }

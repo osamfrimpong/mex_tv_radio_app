@@ -60,7 +60,7 @@ import '../db/sqfEntityBase.dart';
         }  
     
              static fromWeb(VoidCallback liveradioList(List<Liveradio> o)) async {
-         fromWebUrl("https://jsonblob.com/api/jsonBlob/e65eabd3-8817-11e9-b9f8-c3b7c2b4fb11", (objList){
+         fromWebUrl("https://mexgh.com/backend/radios.json", (objList){
           liveradioList (objList);
          });
       }
